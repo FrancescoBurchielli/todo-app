@@ -20,3 +20,21 @@ export const signIn = async (email:string,password:string):Promise<AxiosResponse
     }
     return await axios.post("/login/",payload)
 }
+
+export const createTodo = async (description:string):Promise<AxiosResponse> => {
+    const payload = {
+        description,
+    }
+    const authTokens = localStorage.getItem("authTokens");
+    let token;
+    if(authTokens){
+        token = JSON.parse(authTokens).access;
+    }else{
+        token = null;
+    }  
+    const headers = { Authorization: `Bearer ${token}` }
+    const config = {
+        headers
+    }
+    return await axios.post("/todos/",payload,config);
+}
