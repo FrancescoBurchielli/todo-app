@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     width: 100%;    
-    padding-top: 100px;
+    height: 100%;
+    padding-top:15%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: ${props => props.theme.backgroundColorMain};      
+    background: ${props => props.theme.backgroundColorSecondary};      
 
 `

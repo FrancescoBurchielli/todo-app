@@ -30,7 +30,7 @@ export const AuthProvider: FC<{children:any}> = ({children}) => {
         setAuthTokens(null)
         setUser(null)
         localStorage.removeItem('authTokens')
-        navigate('/login')
+        navigate('/sign-in')
     }
 
     const contextData = {

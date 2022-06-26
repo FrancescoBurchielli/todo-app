@@ -1,92 +1,89 @@
-import { useState, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { deleteTodo, getTodos, updateTodo } from "../../axios/fetches";
 import { AddTodo } from "../../components/AddTodo";
 import { Navbar } from "../../components/Navbar";
 import { AuthContext } from "../../context/AuthContext";
 import { TodoInterface } from "../../interfaces";
-import { BigText, VeryBigText } from "../../styles/components";
+import { VeryBigText } from "../../styles/components";
 import { Todo } from "./components/Todo";
 import { Container } from "./styles";
 
 export const Home = () => {
-  const sampleTodos: TodoInterface[] = [
-    {
-      id: 1,
-      description: "clean house",
-      done: true,
-    },
-    {
-      id: 2,
-      description: "do challenge",
-      done: false,
-    },
-    {
-      id: 3,
-      description: "take bath",
-      done: false,
-    },
-    {
-      id: 4,
-      description: "take bath",
-      done: false,
-    },
-    {
-      id: 5,
-      description: "take bath",
-      done: false,
-    },
-    {
-      id: 6,
-      description: "take bath",
-      done: true,
-    },
-    {
-      id: 7,
-      description: "take bath",
-      done: false,
-    },
-    {
-      id: 8,
-      description: "take bath",
-      done: true,
-    },
-    {
-      id: 9,
-      description: "take bath",
-      done: false,
-    },
-    {
-      id: 10,
-      description: "hsdhsahdshadsdsdsdssdsdsdsdsds",
-      done: true,
-    },
-  ];
+  
+  const {authTokens} = useContext(AuthContext);
+  const navigate = useNavigate();
+  
+  const [todos, setTodos] = useState<Array<TodoInterface>>();
 
-  const context = useContext(AuthContext);
-  const [todos, setTodos] = useState<Array<TodoInterface>>(sampleTodos);
+  useEffect(() => {
+    if(authTokens && authTokens.access){
+      getTodos(authTokens.access)
+    .then(response=>{
+      setTodos(response.data.sort((a:TodoInterface,b:TodoInterface)=>b.id - a.id));
+    })
+    .catch(error => {
+      console.log(error);
+    })
+    }else{
+      navigate("/sign-in")
+    }    
+  }, [authTokens, navigate])
+  
+
 
   const countPendingTodos = () => {
-    const pendingTodos = todos.filter(todo => todo.done === false);
-    return pendingTodos.length;
+    const pendingTodos = todos?.filter(todo => todo.done === false);
+    return pendingTodos?.length;
   }
 
   const getWelcomeSentence = () => {
     const pendingTodos = countPendingTodos();
     if(pendingTodos===0){
-      return "Chill day today. For the moment..."
+      return "Looks like it's a chill day today. For the moment..."
     }else{
       return `You have ${pendingTodos} pending tasks. Let's get some work done!` 
     }
   }
 
-  const toggleTodoComplete = (id: number) => {
-    const newTodos = todos.map((todo) => {
-      if (todo.id === id) {
+  const toggleTodoComplete = (currentTodo: TodoInterface) => {    
+    const newTodos = todos?.map((todo) => {
+      if (todo.id === currentTodo.id) {
         todo.done = !todo.done;
       }
       return todo;
     });
-    setTodos(newTodos);
+    setTodos(newTodos);        
+    if(authTokens && authTokens.access){
+      updateTodo(currentTodo,authTokens.access)
+    .then(response=>{
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    })
+    }else{
+      navigate("/sign-in")
+    }       
   };
+
+  const removeTodo = (id: number) => {
+    const newTodos = todos?.filter((todo) => {
+        return todo.id !== id;
+      });
+    setTodos(newTodos); 
+    if(authTokens && authTokens.access){
+      deleteTodo(id,authTokens.access)
+    .then(response=>{
+      navigate("/");
+    })
+    .catch(error => {
+      console.log(error);
+    })
+    }else{
+      navigate("/sign-in")
+    }   
+  }
 
   return (
     <>
@@ -95,12 +92,13 @@ export const Home = () => {
         <VeryBigText>
           {getWelcomeSentence()}
         </VeryBigText>
-        {todos.map((todo) => {
+        {todos && todos.map((todo) => {
           return (
             <Todo
               key={todo.id}
               todo={todo}
               toggleTodoComplete={toggleTodoComplete}
+              removeTodo={removeTodo}
             />
           );
         })}

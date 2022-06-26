@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { createTodo } from "../../axios/fetches";
 import { Navbar } from "../../components/Navbar";
+import { AuthContext } from "../../context/AuthContext";
 import { CreateUpdateTodoErrors } from "../../interfaces";
 import {
   BigButton,
@@ -13,6 +15,10 @@ import { Container } from "./styles";
 import { checkForm } from "./utils/checkForm";
 
 export const CreateUpdateTodo = () => {
+
+  const {authTokens} = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [description, setDescription] = useState<string>("");
   const [createUpdateTodoError, setCreateUpdateTodoError] = useState<
     Partial<CreateUpdateTodoErrors> | undefined
@@ -28,13 +34,18 @@ export const CreateUpdateTodo = () => {
     if (Object.keys(errors).length) {
       setCreateUpdateTodoError(errors);
     } else {
-      createTodo(description)
+      if(authTokens && authTokens.access){
+        createTodo(description,authTokens.access)
       .then(response=>{
-        console.log(response)
+        navigate("/");
       })
       .catch(error => {
         console.log(error);
       })
+      }else{
+        navigate("/sign-in")
+      }
+      
     }
   };
 

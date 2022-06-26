@@ -1,25 +1,36 @@
-import {FC,useEffect} from 'react'
+import {FC} from 'react'
 import { TodoInterface } from '../../../../interfaces'
 import { Container } from './styles'
 import pinkTick from "../../../../assets/pinkTick.svg"
 import whiteTick from "../../../../assets/whiteTick.svg"
 import editTodo from "../../../../assets/editTodo.svg"
-import removeTodo from "../../../../assets/removeTodo.svg"
+import removeTodoIcon from "../../../../assets/removeTodo.svg"
 
 
-export const Todo:FC<{todo:TodoInterface,toggleTodoComplete: (id:number) => void}> = ({todo,toggleTodoComplete}) => {
+interface TodoProps {
+  todo:TodoInterface,
+  toggleTodoComplete: (todo:TodoInterface) => void,
+  removeTodo:(id: number) => void
+}
 
-  const handleCheckClick = () => {
-    console.log("clicked");
-    toggleTodoComplete(todo.id);
+
+export const Todo:FC<TodoProps> = ({todo,toggleTodoComplete,removeTodo}) => {
+
+
+  const handleCheckClick = () => {    
+    toggleTodoComplete(todo);
+  }
+
+  const handleDelete = () => {
+    removeTodo(todo.id);
   }
 
   return (
     <Container>
       <img id="checkDone" onClick={handleCheckClick} alt="check" className="icon" src={todo.done?pinkTick:whiteTick}></img>
-      <p id={todo.done?"descriptionDone":""} >{todo.description}</p> 
+      <p id={todo.done?"descriptionDone":""} className="description" >{todo.description}</p> 
       <img id="editTodo" alt="edit" className="icon" src={editTodo}></img>
-      <img id="removeTodo" alt="remove" className="icon" src={removeTodo}></img>
+      <img id="removeTodo" onClick={handleDelete} alt="remove" className="icon" src={removeTodoIcon}></img>
     </Container>
   )
 }

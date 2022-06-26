@@ -74,6 +74,7 @@ export const SignIn = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           onClick={() => {
+            setFormErrors(undefined);
             setAccountError(undefined);
           }}
           aria-label="email-input"
@@ -91,6 +92,7 @@ export const SignIn = () => {
           autoComplete="password"
           onChange={(e) => setPassword(e.target.value)}
           onClick={() => {
+            setFormErrors(undefined);
             setAccountError(undefined);
           }}
           aria-label="password-input"

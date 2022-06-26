@@ -44,6 +44,9 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
+  @media only screen and (min-width: 667px) {
+    width: 350px;
+  }
   min-width: 250px;
   width: 250px;
   padding: 10px 5px;
@@ -74,6 +77,7 @@ export const ErrorMessage = styled.p<{ show: boolean }>`
 `;
 
 export const BaseButton = styled.button`
+  cursor: pointer;
   background-color: ${props => props.theme.buttonColor};
   border: none;
   border-radius: 35px;
