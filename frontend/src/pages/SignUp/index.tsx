@@ -13,7 +13,7 @@ import {
   Input,
   SmallButton,
   BigButton,
-} from "../../styles/global";
+} from "../../styles/components";
 import { checkForm } from "./utils/checkForm";
 
 export const SignUp = () => {

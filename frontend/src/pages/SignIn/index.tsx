@@ -11,7 +11,7 @@ import {
   SmallText,
   ErrorMessage,
   BigText,
-} from "../../styles/global";
+} from "../../styles/components";
 import { FormErrors } from "../../interfaces";
 import { checkForm } from "./utils/checkForm";
 import { AuthContext } from "../../context/AuthContext";

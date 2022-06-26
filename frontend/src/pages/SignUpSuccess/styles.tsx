@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { BaseButton } from '../../styles/global'
+import { BaseButton } from '../../styles/components'
 
 
 export const Container = styled.div`

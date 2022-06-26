@@ -14,3 +14,9 @@ export interface FormErrors {
     firstName: string|undefined,
     lastName: string|undefined,
 }
+
+export interface TodoInterface{
+    id: number,
+    description: string,
+    done: boolean,
+}

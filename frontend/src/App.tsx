@@ -1,7 +1,8 @@
-import { useRoutes, BrowserRouter as Router, Routes, Route } from 'react-router-dom' ;
+import { useRoutes, BrowserRouter as Router } from 'react-router-dom' ;
 import { AuthProvider } from './context/AuthContext'
-import { SignIn } from './pages/SignIn';
+import { ThemeProvider } from 'styled-components';
 import {routes} from './routes/routes';
+import { defaultTheme } from './styles/themes';
 
 
 const App = () => {
@@ -13,9 +14,11 @@ const AppWrapper = () => {
   return (
     
     <Router>
-      <AuthProvider>
-        <App/>
-      </AuthProvider>      
+      <ThemeProvider theme={defaultTheme}>
+        <AuthProvider>
+          <App/>
+        </AuthProvider>    
+      </ThemeProvider>  
     </Router>    
    
   );

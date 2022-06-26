@@ -5,6 +5,8 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  background: ${props => props.theme.backgroundColorMain};
+  color: white;
 `;
 
 export const Header = styled.div`
@@ -35,16 +37,25 @@ export const Input = styled.input`
   width: 250px;
   padding: 10px 5px;
   border: none;
-  -webkit-box-shadow: 5px 5px 15px 0px #a4a4a4;
-  box-shadow: 5px 5px 15px 0px #a4a4a4;
-  border-radius: 10px;
+  background: none;
+  border-bottom: ${props => props.theme.borderInputFields};   
+  color: white;
+ 
   &:focus {
-    outline: 2px solid lightgray;
+    outline: none;    
+  }
+
+  &:active {
+    background: none;    
+  }
+  
+  &::placeholder{
+    color:rgba(255, 255, 255, 0.5);
   }
 `;
 
 export const ErrorMessage = styled.p<{ show: boolean }>`
-  color: red;
+  color: ${props => props.theme.buttonColor};
   font-size: 13px;
   margin: 0px;
   margin: 10px 0px;
@@ -52,11 +63,10 @@ export const ErrorMessage = styled.p<{ show: boolean }>`
 `;
 
 export const BaseButton = styled.button`
-  background-color: #eeeeee;
+  background-color: ${props => props.theme.buttonColor};
   border: none;
   border-radius: 35px;
-  -webkit-box-shadow: 5px 5px 15px 0px #a4a4a4;
-  box-shadow: 5px 5px 15px 0px #a4a4a4;
+  color: white;
 `;
 
 export const SmallButton = styled(BaseButton)`
