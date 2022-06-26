@@ -1,4 +1,6 @@
-import { useRoutes, BrowserRouter as Router } from 'react-router-dom' ;
+import { useRoutes, BrowserRouter as Router, Routes, Route } from 'react-router-dom' ;
+import { AuthProvider } from './context/AuthContext'
+import { SignIn } from './pages/SignIn';
 import {routes} from './routes/routes';
 
 
@@ -9,9 +11,13 @@ const App = () => {
 
 const AppWrapper = () => {
   return (
+    
     <Router>
-      <App />
-    </Router>
+      <AuthProvider>
+        <App/>
+      </AuthProvider>      
+    </Router>    
+   
   );
 };
 

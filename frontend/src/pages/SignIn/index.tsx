@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { signIn } from "../../axios/fetches";
 import {
@@ -14,10 +14,13 @@ import {
 } from "../../styles/global";
 import { FormErrors } from "../../interfaces";
 import { checkForm } from "./utils/checkForm";
+import { AuthContext } from "../../context/AuthContext";
 
 export const SignIn = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
+  const {setAuthTokens} = useContext(AuthContext);  ;
 
+  
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [accountError, setAccountError] = useState<string | undefined>();
@@ -42,9 +45,11 @@ export const SignIn = () => {
       setFormErrors(errors);
     } else {
       signIn(email, password)
-        .then((response) => {
-          localStorage.setItem("access", response.data.access);
-          localStorage.setItem("refresh", response.data.refresh);
+        .then((response) => {          
+          localStorage.setItem('authTokens', JSON.stringify(response.data));
+          if(setAuthTokens){
+            setAuthTokens(response.data)
+          }         
           navigate("/");
         })
         .catch((error) => {
