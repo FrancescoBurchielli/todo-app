@@ -5,8 +5,14 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   background: ${props => props.theme.backgroundColorMain};
   color: white;
+  #logo{
+    margin-top: 50px;
+    width: 200px;
+    height: auto;
+  }
 `;
 
 export const Header = styled.div`
@@ -19,23 +25,22 @@ export const Header = styled.div`
 export const SmallText = styled.h5`
   color:white;
   text-align:center;
-  margin: 0px; 
-  padding: 0px 30px;
+  margin:0px;
 `;
 
 export const BigText = styled.h2`
   color: white;
   text-align:center;
-  margin-bottom:70px;  
-  padding: 0px 30px;
- 
+  margin: 0px; 
+  //margin: 40px;
+  //padding: 40px;
+  //box-sizing: border-box;
 `;
 
 export const VeryBigText = styled.h1`
   color: white;
   text-align:center;
-  margin-bottom:40px;  
-  padding: 0px 30px;
+  margin:0px;
 `;
 
 export const Form = styled.form`
@@ -45,6 +50,11 @@ export const Form = styled.form`
   justify-content: center;
   align-items: center;
   width: 100%;
+  #message{
+    color: white;
+    margin-bottom: 50px;
+    text-align: center;
+  }
 `;
 
 export const Input = styled.input`

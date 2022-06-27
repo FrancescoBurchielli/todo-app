@@ -96,9 +96,9 @@ export const Home = () => {
     <>
       <Navbar />
       <Container>
-        <BigText>
+        <h2 id="welcomeSentence">
           {getWelcomeSentence()}
-        </BigText>
+        </h2>
         {loading && <Loading/>}
         {todos && todos.map((todo) => {
           return (

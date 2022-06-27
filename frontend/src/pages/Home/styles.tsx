@@ -7,8 +7,11 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: ${props => props.theme.backgroundColorMain};   
-    
-    
+    background: ${props => props.theme.backgroundColorMain};
+    #welcomeSentence{
+        color: white;
+        text-align: center;
+        margin: 20px 20px;
+    }       
 
 `

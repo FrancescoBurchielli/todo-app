@@ -15,6 +15,7 @@ import {
   BigButton,
 } from "../../styles/components";
 import { checkForm } from "./utils/checkForm";
+import Logo from "../../assets/logo.svg"
 
 export const SignUp = () => {
   const navigate = useNavigate();
@@ -85,8 +86,9 @@ export const SignUp = () => {
         <SmallText>Already have an account?</SmallText>
         <SmallButton onClick={() => navigate("/sign-in")}>Sign in</SmallButton>
       </Header>
+      <img id="logo" src={Logo} alt="logo"/>
       <Form onSubmit={onSubmitHandler}>
-        <BigText>We can't wait to have you on board!</BigText>
+        <h2 id="message">We can't wait to have you on board!</h2>
         <Input
           id="email"
           type="email"

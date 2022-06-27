@@ -37,23 +37,23 @@ export const CreateUpdateTodo = () => {
       setCreateUpdateTodoError(errors);
     } else {
       if (authTokens && authTokens.access) {
-        if(todoToBeUpdated){
-          updateTodo({...todoToBeUpdated,description}, authTokens.access)
-          .then((response) => {
-            navigate("/");
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-        }else{
+        if (todoToBeUpdated) {
+          updateTodo({ ...todoToBeUpdated, description }, authTokens.access)
+            .then((response) => {
+              navigate("/");
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        } else {
           createTodo(description, authTokens.access)
-          .then((response) => {
-            navigate("/");
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-        }       
+            .then((response) => {
+              navigate("/");
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
       } else {
         navigate("/sign-in");
       }
@@ -65,11 +65,11 @@ export const CreateUpdateTodo = () => {
       <Navbar />
       <Container>
         <Form onSubmit={onSubmitHandler}>
-          <BigText>
+          <h2 id="message">
             {todoToBeUpdated
               ? "Update your description below"
               : "What else do you want to get done today?"}
-          </BigText>
+          </h2>
           <Input
             id="newTodo"
             type="text"

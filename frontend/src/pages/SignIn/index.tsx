@@ -15,6 +15,7 @@ import {
 import { FormErrors } from "../../interfaces";
 import { checkForm } from "./utils/checkForm";
 import { AuthContext } from "../../context/AuthContext";
+import Logo from "../../assets/logo.svg"
 
 export const SignIn = () => {
   const navigate = useNavigate(); 
@@ -65,8 +66,9 @@ export const SignIn = () => {
         <SmallText>Don't have an account yet?</SmallText>
         <SmallButton onClick={() => navigate("/sign-up")}>Sign Up</SmallButton>
       </Header>
+      <img id="logo" src={Logo} alt="logo"/>
       <Form onSubmit={onSubmitHandler}>
-        <BigText>Welcome back!</BigText>
+        <h2 id="message">Welcome back!</h2>
         <Input
           id="email"
           type="email"
