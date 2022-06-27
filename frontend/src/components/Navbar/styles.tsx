@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     box-sizing: border-box;
-    position: fixed;
+    position: sticky;
+    top: 0;
     padding: 10px 20px;   
     width: 100%;  
     height: 10%;

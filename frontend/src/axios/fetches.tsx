@@ -26,6 +26,15 @@ export const signIn = async (
   return await axios.post("/login/", payload);
 };
 
+//API request to refresh token
+export const refreshToken = async (
+  refresh: string,
+): Promise<AxiosResponse> => {
+  const payload={refresh}
+  return await axios.post("/token/refresh/", payload);
+};
+
+
 // API request to get all todos
 export const getTodos = async (token: string): Promise<AxiosResponse> => {
   const headers = { Authorization: `Bearer ${token}` };

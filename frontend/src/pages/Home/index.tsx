@@ -13,7 +13,9 @@ export const Home = () => {
   
   const {authTokens} = useContext(AuthContext);
   const navigate = useNavigate();
-  
+
+  //console.log("access token from Home: ", authTokens?.access);
+
   const [todos, setTodos] = useState<Array<TodoInterface>>();
 
   useEffect(() => {
@@ -57,7 +59,6 @@ export const Home = () => {
     if(authTokens && authTokens.access){
       updateTodo(currentTodo,authTokens.access)
     .then(response=>{
-      console.log(response);
     })
     .catch(error => {
       console.log(error);

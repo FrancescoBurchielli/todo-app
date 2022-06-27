@@ -65,6 +65,7 @@ export const CreateUpdateTodo = () => {
               setCreateUpdateTodoError(undefined);
             }}
             aria-label="new-todo"
+            autoComplete="off"
           ></Input>
           <ErrorMessage show={createUpdateTodoError !== undefined}>
             {createUpdateTodoError?.description ? createUpdateTodoError.description : "error placeholder"}

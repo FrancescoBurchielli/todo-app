@@ -35,7 +35,6 @@ export const SignIn = () => {
 
   const onSubmitHandler = (e: React.SyntheticEvent): void => {
     e.preventDefault();
-
     const errors = checkForm({
       email,
       password,
@@ -56,8 +55,9 @@ export const SignIn = () => {
           setAccountError(error.response.data.detail);
           setFormErrors(undefined);
         });
+      }        
     }
-  };
+  
 
   return (
     <Container>
@@ -77,6 +77,7 @@ export const SignIn = () => {
             setFormErrors(undefined);
             setAccountError(undefined);
           }}
+          autoComplete="off"
           aria-label="email-input"
         ></Input>
         <ErrorMessage show={fieldHasErrors("email")}>
@@ -89,7 +90,7 @@ export const SignIn = () => {
           type="password"
           placeholder="password"
           value={password}
-          autoComplete="password"
+          autoComplete="off"
           onChange={(e) => setPassword(e.target.value)}
           onClick={() => {
             setFormErrors(undefined);

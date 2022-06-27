@@ -20,7 +20,9 @@ export const Container = styled.div`
         overflow: hidden;
     }
     #descriptionDone{
-        text-decoration: line-through;       
+        text-decoration: line-through;  
+        text-decoration-thickness: 2px;
+     
     }
     .icon{
         cursor: pointer;
