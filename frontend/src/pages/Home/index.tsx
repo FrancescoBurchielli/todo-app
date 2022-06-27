@@ -2,10 +2,11 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { deleteTodo, getTodos, updateTodo } from "../../axios/fetches";
 import { AddTodo } from "../../components/AddTodo";
+import { Loading } from "../../components/Loading";
 import { Navbar } from "../../components/Navbar";
 import { AuthContext } from "../../context/AuthContext";
 import { TodoInterface } from "../../interfaces";
-import { VeryBigText } from "../../styles/components";
+import { BigText } from "../../styles/components";
 import { Todo } from "./components/Todo";
 import { Container } from "./styles";
 
@@ -13,16 +14,18 @@ export const Home = () => {
   
   const {authTokens} = useContext(AuthContext);
   const navigate = useNavigate();
-
-  //console.log("access token from Home: ", authTokens?.access);
-
+  
+  const [loading,setLoading] = useState<boolean>(true);
   const [todos, setTodos] = useState<Array<TodoInterface>>();
 
   useEffect(() => {
     if(authTokens && authTokens.access){
       getTodos(authTokens.access)
     .then(response=>{
-      setTodos(response.data.sort((a:TodoInterface,b:TodoInterface)=>b.id - a.id));
+      setTimeout(()=>{
+        setTodos(response.data.sort((a:TodoInterface,b:TodoInterface)=>b.id - a.id))
+        setLoading(false);
+      },300);     
     })
     .catch(error => {
       console.log(error);
@@ -41,6 +44,9 @@ export const Home = () => {
 
   const getWelcomeSentence = () => {
     const pendingTodos = countPendingTodos();
+    if(loading){
+      return "Loading..."
+    }
     if(pendingTodos===0){
       return "Looks like it's a chill day today. For the moment..."
     }else{
@@ -90,9 +96,10 @@ export const Home = () => {
     <>
       <Navbar />
       <Container>
-        <VeryBigText>
+        <BigText>
           {getWelcomeSentence()}
-        </VeryBigText>
+        </BigText>
+        {loading && <Loading/>}
         {todos && todos.map((todo) => {
           return (
             <Todo
@@ -104,7 +111,7 @@ export const Home = () => {
           );
         })}
       </Container>
-      <AddTodo />
+      {todos &&<AddTodo />}
     </>
   );
 };

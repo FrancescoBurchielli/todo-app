@@ -65,7 +65,7 @@ export const AuthProvider: FC<{ children: any }> = ({ children }) => {
   };
 
   useEffect(() => {
-    let intervalTime = 1000 * 60 * 30;
+    let intervalTime = 1000 * 60 * 59;
 
     let interval = setInterval(() => {
       console.log("Interval is on...");

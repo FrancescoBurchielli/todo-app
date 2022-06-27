@@ -14,8 +14,6 @@ export const Container = styled.div`
     width: 300px;
     height: auto;
   }
-
-
 `
 
 export const MessageText = styled.h1`

@@ -45,7 +45,7 @@ export const SignUp = () => {
       signUp({ email, password, passwordRepeat, firstName, lastName })
         .then((response) => {
           if (response.status === 201) {
-            navigate("/sign-up-success");
+            navigate("/sign-up/success");
           } else {
           }
         })

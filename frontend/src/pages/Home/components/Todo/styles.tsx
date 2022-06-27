@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    @media only screen and (min-width: 667px) {
+    @media only screen and (min-width: 641px) {
+        width: 60%;
+    }
+    @media only screen and (min-width: 1008px) {
         width: 30%;
     }
     width: 90%;
@@ -9,7 +12,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: ${props => props.theme.backgroundColorMain};
+    background: ${props => props.theme.backgroundColorSecondary};
     color: white;
     margin: 20px 0px;
     .description{

@@ -13,13 +13,13 @@ export const routes = [
         path: "/todo/new", element: <CreateUpdateTodo/>
     },
     {    
-        path: "/todo/:id", element: <CreateUpdateTodo/>
+        path: "/todo/update", element: <CreateUpdateTodo/>
     },
     {    
         path: "/sign-up", element: <SignUp />, 
     },
     {    
-        path: "/sign-up-success", element: <SignUpSuccess/> 
+        path: "/sign-up/success", element: <SignUpSuccess/> 
     },
     {    
         path: "/sign-in", element: <SignIn/>

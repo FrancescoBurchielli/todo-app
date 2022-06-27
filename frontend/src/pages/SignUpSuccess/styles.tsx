@@ -8,14 +8,23 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-`
+  justify-content: space-evenly;
+  background: ${props => props.theme.backgroundColorMain}; 
+  
+  #logoAndMotto{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-export const MessageText = styled.h1`
-    margin: 20px;
-    text-align: center;
+    #logo{
+    width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  }
+  
 `
-
 
 export const TakeMeToSignInButton = styled(BaseButton)`
   width: 200px;   

@@ -8,6 +8,6 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: ${props => props.theme.backgroundColorSecondary};      
+    background: ${props => props.theme.backgroundColorMain};      
 
 `

@@ -18,12 +18,16 @@ export const Header = styled.div`
 
 export const SmallText = styled.h5`
   color:white;
+  text-align:center;
+  margin: 0px; 
+  padding: 0px 30px;
 `;
 
 export const BigText = styled.h2`
   color: white;
   text-align:center;
   margin-bottom:70px;  
+  padding: 0px 30px;
  
 `;
 
@@ -31,7 +35,7 @@ export const VeryBigText = styled.h1`
   color: white;
   text-align:center;
   margin-bottom:40px;  
-  padding: 0px 20px;
+  padding: 0px 30px;
 `;
 
 export const Form = styled.form`

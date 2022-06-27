@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
-import { Container,MessageText,TakeMeToSignInButton} from "./styles"
-import Success from "../../assets/success.png"
+import { Container,TakeMeToSignInButton} from "./styles"
+import Logo from "../../assets/logo.svg"
+import { VeryBigText, SmallText } from "../../styles/components"
 
 export const SignUpSuccess = () => {
 
@@ -8,8 +9,11 @@ export const SignUpSuccess = () => {
 
   return (
     <Container>
-      <MessageText>You've succesfully signed up!</MessageText>
-      <img src={Success}/>
+      <div id="logoAndMotto">
+        <img id="logo" alt="logo" src={Logo}></img>
+        <SmallText>get things done today</SmallText>
+      </div>
+      <VeryBigText>You've successfully signed up!</VeryBigText>
       <TakeMeToSignInButton onClick={()=>navigate("/sign-in")}>Take me to sign-in</TakeMeToSignInButton>
     </Container>
   )
