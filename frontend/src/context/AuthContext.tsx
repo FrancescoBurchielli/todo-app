@@ -31,8 +31,6 @@ export const AuthProvider: FC<{ children: any }> = ({ children }) => {
       : null
   );
 
-
-
   const logoutUser = () => {
     setAuthTokens(null);
     setUser(null);
