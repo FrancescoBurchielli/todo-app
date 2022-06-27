@@ -10,8 +10,8 @@ export const Navbar:FC<{}> = ({}) => {
 
   return (
     <Container>
-         <img id="logo" alt="logo" src={Logo}></img>
-         <img id="logOut" alt="logout" src={Logout} onClick={logoutUser}></img>
+         <img id="logo" alt="logo" src={Logo}/>
+         <img id="logOut" alt="logout" src={Logout} onClick={logoutUser}/>
     </Container>  
     
   )

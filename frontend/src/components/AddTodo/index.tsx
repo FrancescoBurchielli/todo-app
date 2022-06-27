@@ -13,7 +13,7 @@ export const AddTodo: FC<{}> = ({}) => {
 
   return (
     <Container onClick={handleClick}>
-      <img id="addTodo" src={addTodo}></img>
+      <img id="addTodo" src={addTodo} alt="add-todo"/>
     </Container>
   );
 };

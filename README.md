@@ -9,7 +9,7 @@ A simple web app that allows you to create and update todos. More specifically, 
 6. Toggle a todo as complete / not complete
 7. Remove a todo
 
-The web app has been developed with React, Typescript, Styled-Components, Docker.
+This web app has been developed mostly with React, Typescript, Styled-Components, Axios, Docker. The app has been designed to be responsive. Back-end API kindly provided by Tiko.
 
 
 ## Prerequisites
@@ -28,4 +28,9 @@ https://docs.docker.com/get-docker/
 6. Navigate to the 3000 port on your local host (`http://127.0.0.1:3000` on most browsers)
 7. Have fun creating todos :)
 
-## Next steps
+## Unfinished business
+
+1. Lint code
+2. Refactor code as to be more modular, readable and maintanaible
+3. Add more granular and meaningful error handling (e.g. if the error is due to token not being valid), with targeted UI componenents and pages
+4. Add tests (e.g. in Jest)

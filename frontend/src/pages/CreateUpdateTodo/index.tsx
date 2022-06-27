@@ -6,7 +6,6 @@ import { AuthContext } from "../../context/AuthContext";
 import { CreateUpdateTodoErrors, TodoInterface } from "../../interfaces";
 import {
   BigButton,
-  BigText,
   ErrorMessage,
   Form,
   Input,

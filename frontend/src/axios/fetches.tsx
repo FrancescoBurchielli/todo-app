@@ -27,13 +27,10 @@ export const signIn = async (
 };
 
 //API request to refresh token
-export const refreshToken = async (
-  refresh: string,
-): Promise<AxiosResponse> => {
-  const payload={refresh}
+export const refreshToken = async (refresh: string): Promise<AxiosResponse> => {
+  const payload = { refresh };
   return await axios.post("/token/refresh/", payload);
 };
-
 
 // API request to get all todos
 export const getTodos = async (token: string): Promise<AxiosResponse> => {
@@ -60,12 +57,15 @@ export const createTodo = async (
 };
 
 // API request to update a todo
-export const updateTodo = async (todo:TodoInterface,token: string): Promise<AxiosResponse> => {
+export const updateTodo = async (
+  todo: TodoInterface,
+  token: string
+): Promise<AxiosResponse> => {
   const headers = { Authorization: `Bearer ${token}` };
   const payload = {
-    description : todo.description,
-    done : todo.done
-  }  
+    description: todo.description,
+    done: todo.done,
+  };
   const config = {
     headers,
   };
@@ -73,7 +73,10 @@ export const updateTodo = async (todo:TodoInterface,token: string): Promise<Axio
 };
 
 // API request to delete a todo
-export const deleteTodo = async (id:number,token: string): Promise<AxiosResponse> => {
+export const deleteTodo = async (
+  id: number,
+  token: string
+): Promise<AxiosResponse> => {
   const headers = { Authorization: `Bearer ${token}` };
   const config = {
     headers,

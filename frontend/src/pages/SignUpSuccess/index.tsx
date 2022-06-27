@@ -10,7 +10,7 @@ export const SignUpSuccess = () => {
   return (
     <Container>
       <div id="logoAndMotto">
-        <img id="logo" alt="logo" src={Logo}></img>
+        <img id="logo" alt="logo" src={Logo}/>
         <SmallText>get things done today</SmallText>
       </div>
       <h2 id="message">Hurray! You've succesfully signed up</h2>

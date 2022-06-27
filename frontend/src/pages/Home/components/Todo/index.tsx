@@ -32,10 +32,10 @@ export const Todo:FC<TodoProps> = ({todo,toggleTodoComplete,removeTodo}) => {
 
   return (
     <Container>
-      <img id="checkDone" onClick={handleCheckClick} alt="check" className="icon" src={todo.done?pinkTick:whiteTick}></img>
+      <img id="checkDone" onClick={handleCheckClick} alt="check" className="icon" src={todo.done?pinkTick:whiteTick}/>
       <p id={todo.done?"descriptionDone":""} className="description" >{todo.description}</p> 
-      <img id="editTodo"  onClick={handleEditClick} alt="edit" className="icon" src={editTodo}></img>
-      <img id="removeTodo" onClick={handleDeleteClick} alt="remove" className="icon" src={removeTodoIcon}></img>
+      <img id="editTodo"  onClick={handleEditClick} alt="edit" className="icon" src={editTodo}/>
+      <img id="removeTodo" onClick={handleDeleteClick} alt="remove" className="icon" src={removeTodoIcon}/>
     </Container>
   )
 }

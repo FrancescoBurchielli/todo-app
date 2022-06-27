@@ -47,6 +47,7 @@ export const Form = styled.form`
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin-bottom: 50px;
   #message {
     color: white;
     margin: 20px 20px 50px 20px;

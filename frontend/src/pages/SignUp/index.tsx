@@ -51,6 +51,7 @@ export const SignUp = () => {
           }
         })
         .catch((error) => {
+          console.log(error.response.status);
           const errorData: SignUpAPIResponse = error.response.data;
           const errors: Record<string, string> = {};
           for (const [key, value] of Object.entries(errorData)) {
