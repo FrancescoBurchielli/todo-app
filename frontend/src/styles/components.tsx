@@ -6,10 +6,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: ${props => props.theme.backgroundColorMain};
+  background: ${(props) => props.theme.backgroundColorMain};
   color: white;
-  #logo{
-    margin-top: 50px;
+  #logo {
+    margin-top: 20px;
     width: 200px;
     height: auto;
   }
@@ -20,27 +20,24 @@ export const Header = styled.div`
   align-items: center;
   justify-content: flex-end;
   height: 10%;
+  margin-top: 10px;
 `;
 
 export const SmallText = styled.h5`
-  color:white;
-  text-align:center;
-  margin:0px;
+  color: white;
+  text-align: center;  
 `;
 
 export const BigText = styled.h2`
   color: white;
-  text-align:center;
-  margin: 0px; 
-  //margin: 40px;
-  //padding: 40px;
-  //box-sizing: border-box;
+  text-align: center;
+  margin: 0px;
 `;
 
 export const VeryBigText = styled.h1`
   color: white;
-  text-align:center;
-  margin:0px;
+  text-align: center;
+  margin: 0px;
 `;
 
 export const Form = styled.form`
@@ -50,9 +47,9 @@ export const Form = styled.form`
   justify-content: center;
   align-items: center;
   width: 100%;
-  #message{
+  #message {
     color: white;
-    margin-bottom: 50px;
+    margin: 20px 20px 50px 20px;
     text-align: center;
   }
 `;
@@ -66,24 +63,24 @@ export const Input = styled.input`
   padding: 10px 5px;
   border: none;
   background: none;
-  border-bottom: ${props => props.theme.borderInputFields};   
+  border-bottom: ${(props) => props.theme.borderInputFields};
   color: white;
- 
+
   &:focus {
-    outline: none;    
+    outline: none;
   }
 
   &:active {
-    background: none;    
+    background: none;
   }
-  
-  &::placeholder{
-    color:rgba(255, 255, 255, 0.5);
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.5);
   }
 `;
 
 export const ErrorMessage = styled.p<{ show: boolean }>`
-  color: ${props => props.theme.buttonColor};
+  color: ${(props) => props.theme.buttonColor};
   font-size: 13px;
   margin: 0px;
   margin: 10px 0px;
@@ -92,13 +89,14 @@ export const ErrorMessage = styled.p<{ show: boolean }>`
 
 export const BaseButton = styled.button`
   cursor: pointer;
-  background-color: ${props => props.theme.buttonColor};
+  background-color: ${(props) => props.theme.buttonColor};
   border: none;
   border-radius: 35px;
   color: white;
 `;
 
 export const SmallButton = styled(BaseButton)`
+  min-width: 80px;
   width: 80px;
   height: auto;
   margin: 0px 20px 0px 15px;
@@ -106,6 +104,7 @@ export const SmallButton = styled(BaseButton)`
 `;
 
 export const BigButton = styled(BaseButton)`
+  min-width: 200px;
   width: 200px;
   margin-top: 30px;
   padding: 20px 10px;

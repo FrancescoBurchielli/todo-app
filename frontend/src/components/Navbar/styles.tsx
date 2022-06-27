@@ -5,8 +5,9 @@ export const Container = styled.div`
     position: sticky;
     top: 0;
     padding: 40px 20px;   
-    width: 100%;  
-    height: 150px;
+    width: 100%;
+    min-height: 100px;  
+    height: 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;

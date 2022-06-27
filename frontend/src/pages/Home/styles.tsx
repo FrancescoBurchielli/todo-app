@@ -7,6 +7,7 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-bottom: 100px;
     background: ${props => props.theme.backgroundColorMain};
     #welcomeSentence{
         color: white;

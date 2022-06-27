@@ -13,7 +13,7 @@ export const SignUpSuccess = () => {
         <img id="logo" alt="logo" src={Logo}></img>
         <SmallText>get things done today</SmallText>
       </div>
-      <VeryBigText>You've successfully signed up!</VeryBigText>
+      <h2 id="message">Hurra! You've succesfully signed up</h2>
       <TakeMeToSignInButton onClick={()=>navigate("/sign-in")}>Take me to sign-in</TakeMeToSignInButton>
     </Container>
   )

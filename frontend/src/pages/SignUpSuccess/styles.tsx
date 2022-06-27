@@ -10,18 +10,25 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-evenly;
   background: ${props => props.theme.backgroundColorMain}; 
-  
+
   #logoAndMotto{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 
     #logo{
     width: 200px;
     height: auto;
     margin-bottom: 10px;
+    }
   }
+
+  #message{
+    color: white;
+    text-align: center;
+    margin: 30px 20px;
   }
   
 `

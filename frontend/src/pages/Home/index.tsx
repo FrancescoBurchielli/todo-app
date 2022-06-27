@@ -28,10 +28,10 @@ export const Home = () => {
       },300);     
     })
     .catch(error => {
-      console.log(error);
+      navigate("/sign-in");
     })
     }else{
-      navigate("/sign-in")
+      navigate("/sign-in");
     }    
   }, [authTokens, navigate])
   
