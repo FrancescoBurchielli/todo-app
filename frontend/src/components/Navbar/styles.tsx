@@ -3,13 +3,12 @@ import styled from "styled-components";
 export const Container = styled.div`
     box-sizing: border-box;
     position: sticky;
-    top: 0;
-    padding: 40px 20px;   
+    top: 0;  
     width: 100%;
     min-height: 100px;  
     height: 100px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background: none;
     background: ${props => props.theme.backgroundColorMain};    

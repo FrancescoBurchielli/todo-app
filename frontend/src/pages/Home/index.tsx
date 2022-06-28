@@ -27,12 +27,10 @@ export const Home = () => {
         setLoading(false);
       },300);     
     })
-    .catch(error => {
-      navigate("/sign-in");
+    .catch(() => {
+      navigate("/something-wrong");
     })
-    }else{
-      navigate("/sign-in");
-    }    
+    } 
   }, [authTokens, navigate])
   
 
@@ -64,14 +62,12 @@ export const Home = () => {
     setTodos(newTodos);        
     if(authTokens && authTokens.access){
       updateTodo(currentTodo,authTokens.access)
-    .then(response=>{
+    .then(()=>{
     })
-    .catch(error => {
-      console.log(error);
+    .catch(() => {
+      navigate("/something-wrong");
     })
-    }else{
-      navigate("/sign-in")
-    }       
+    }     
   };
 
   const removeTodo = (id: number) => {
@@ -81,24 +77,22 @@ export const Home = () => {
     setTodos(newTodos); 
     if(authTokens && authTokens.access){
       deleteTodo(id,authTokens.access)
-    .then(response=>{
+    .then(()=>{
       navigate("/");
     })
-    .catch(error => {
-      console.log(error);
+    .catch(() => {
+      navigate("/something-wrong");
     })
-    }else{
-      navigate("/sign-in")
-    }   
+    } 
   }
 
   return (
     <>
-      <Navbar />
-      <Container>
-        <h2 id="welcomeSentence">
+      <Navbar />      
+      <Container>   
+        <div id="welcomeSentence">
           {getWelcomeSentence()}
-        </h2>
+        </div> 
         {loading && <Loading/>}
         {todos && todos.map((todo) => {
           return (

@@ -35,26 +35,24 @@ export const CreateUpdateTodo = () => {
     if (Object.keys(errors).length) {
       setCreateUpdateTodoError(errors);
     } else {
-      if (authTokens && authTokens.access) {
+      if (authTokens && authTokens.access){
         if (todoToBeUpdated) {
           updateTodo({ ...todoToBeUpdated, description }, authTokens.access)
-            .then((response) => {
+            .then(() => {
               navigate("/");
             })
-            .catch((error) => {
-              console.log(error);
+            .catch(() => {
+              navigate("/something-wrong");
             });
         } else {
           createTodo(description, authTokens.access)
-            .then((response) => {
+            .then(() => {
               navigate("/");
             })
-            .catch((error) => {
-              console.log(error);
+            .catch(() => {
+              navigate("/something-wrong");
             });
         }
-      } else {
-        navigate("/sign-in");
       }
     }
   };

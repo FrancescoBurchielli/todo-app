@@ -10,7 +10,6 @@ import {
   Input,
   SmallText,
   ErrorMessage,
-  BigText,
 } from "../../styles/components";
 import { FormErrors } from "../../interfaces";
 import { checkForm } from "./utils/checkForm";
@@ -24,7 +23,7 @@ export const SignIn = () => {
   
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [accountError, setAccountError] = useState<string | undefined>();
+  const [signInError, setSignInError] = useState<string | undefined>();
   const [formErrors, setFormErrors] = useState<
     Partial<FormErrors> | undefined
   >();
@@ -53,7 +52,12 @@ export const SignIn = () => {
           navigate("/");
         })
         .catch((error) => {
-          setAccountError(error.response.data.detail);
+          if(error.response.data.detail){
+            setSignInError(error.response.data.detail);
+          }else{
+            setSignInError("Can't sign you in at the moment. Please try again later");
+          }
+          
           setFormErrors(undefined);
         });
       }        
@@ -77,7 +81,7 @@ export const SignIn = () => {
           onChange={(e) => setEmail(e.target.value)}
           onClick={() => {
             setFormErrors(undefined);
-            setAccountError(undefined);
+            setSignInError(undefined);
           }}
           autoComplete="off"
           aria-label="email-input"
@@ -96,7 +100,7 @@ export const SignIn = () => {
           onChange={(e) => setPassword(e.target.value)}
           onClick={() => {
             setFormErrors(undefined);
-            setAccountError(undefined);
+            setSignInError(undefined);
           }}
           aria-label="password-input"
         ></Input>
@@ -105,8 +109,8 @@ export const SignIn = () => {
             ? formErrors.password
             : "error placeholder"}
         </ErrorMessage>
-        <ErrorMessage show={accountError !== undefined}>
-          {accountError ? accountError : "error placeholder"}
+        <ErrorMessage show={signInError !== undefined}>
+          {signInError ? signInError : "error placeholder"}
         </ErrorMessage>
         <BigButton type="submit">Sign In</BigButton>
       </Form>

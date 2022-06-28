@@ -15,7 +15,7 @@ import {
   BigButton,
 } from "../../styles/components";
 import { checkForm } from "./utils/checkForm";
-import Logo from "../../assets/logo.svg"
+import Logo from "../../assets/logo.svg";
 
 export const SignUp = () => {
   const navigate = useNavigate();
@@ -25,6 +25,7 @@ export const SignUp = () => {
   const [passwordRepeat, setPasswordRepeat] = useState<string>("");
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
+  const [signUpError, setSignUpError] = useState<string | undefined>();
   const [formErrors, setFormErrors] = useState<
     Partial<FormErrors> | undefined
   >();
@@ -51,29 +52,40 @@ export const SignUp = () => {
           }
         })
         .catch((error) => {
-          console.log(error.response.status);
-          const errorData: SignUpAPIResponse = error.response.data;
-          const errors: Record<string, string> = {};
-          for (const [key, value] of Object.entries(errorData)) {
-            let newKey;
-            switch (key) {
-              case "first_name":
-                newKey = "firstName";
-                break;
-              case "last_name":
-                newKey = "lastName";
-                break;
-              case "password2":
-                newKey = "passwordRepeat";
-                break;
-              default:
-                newKey = key;
+          const errorData: SignUpAPIResponse = error?.response?.data;
+          if (errorData && error.response.status !== 404) {
+            const errors: Record<string, string> = {};
+            for (const [key, value] of Object.entries(errorData)) {
+              let newKey;
+              switch (key) {
+                case "first_name":
+                  newKey = "firstName";
+                  break;
+                case "last_name":
+                  newKey = "lastName";
+                  break;
+                case "password2":
+                  newKey = "passwordRepeat";
+                  break;
+                default:
+                  newKey = key;
+              }
+              errors[newKey] = value;
             }
-            errors[newKey] = value;
+            setFormErrors(errors);
+          } else {
+            setSignUpError(
+              "Can't sign you up at the moment. Please try again later"
+            );
           }
-          setFormErrors(errors);
         });
     }
+  };
+
+  //utility function to reset errors
+  const resetErrors = () => {
+    setFormErrors(undefined);
+    setSignUpError(undefined);
   };
 
   //utility function to check if form field has errors
@@ -87,7 +99,7 @@ export const SignUp = () => {
         <SmallText>Already have an account?</SmallText>
         <SmallButton onClick={() => navigate("/sign-in")}>Sign in</SmallButton>
       </Header>
-      <img id="logo" src={Logo} alt="logo"/>
+      <img id="logo" src={Logo} alt="logo" />
       <Form onSubmit={onSubmitHandler}>
         <h2 id="message">We can't wait to have you on board!</h2>
         <Input
@@ -97,7 +109,7 @@ export const SignUp = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           onClick={() => {
-            setFormErrors(undefined);
+            resetErrors();
           }}
           aria-label="email-input"
         ></Input>
@@ -115,6 +127,7 @@ export const SignUp = () => {
           onChange={(e) => setPassword(e.target.value)}
           onClick={() => {
             setFormErrors(undefined);
+            setSignUpError(undefined);
           }}
           aria-label="password-input"
         ></Input>
@@ -131,7 +144,7 @@ export const SignUp = () => {
           autoComplete="repeat-password"
           onChange={(e) => setPasswordRepeat(e.target.value)}
           onClick={() => {
-            setFormErrors(undefined);
+            resetErrors();
           }}
           aria-label="password-repeat-input"
         ></Input>
@@ -147,7 +160,7 @@ export const SignUp = () => {
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           onClick={() => {
-            setFormErrors(undefined);
+            resetErrors();
           }}
           aria-label="first-name"
         ></Input>
@@ -163,7 +176,7 @@ export const SignUp = () => {
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           onClick={() => {
-            setFormErrors(undefined);
+            resetErrors();
           }}
           aria-label="last-name"
         ></Input>
@@ -171,6 +184,9 @@ export const SignUp = () => {
           {formErrors !== undefined && formErrors.lastName
             ? formErrors.lastName
             : "error placeholder"}
+        </ErrorMessage>
+        <ErrorMessage show={signUpError !== undefined}>
+          {signUpError ? signUpError : "error placeholder"}
         </ErrorMessage>
         <BigButton type="submit">Sign Up</BigButton>
       </Form>
