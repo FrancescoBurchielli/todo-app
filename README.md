@@ -32,5 +32,5 @@ https://docs.docker.com/get-docker/
 
 1. Add more granular and structured error handling, with targeted UI components and pages
 2. Add tests (e.g. in Jest) 
-3. Refactor code as to be more modular, readable and maintanable
+3. Refactor code as to be more modular, readable and maintainable
 4. Lint code
