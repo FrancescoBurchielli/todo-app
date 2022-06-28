@@ -186,7 +186,7 @@ export const SignUp = () => {
             : "error placeholder"}
         </ErrorMessage>
         <ErrorMessage show={signUpError !== undefined}>
-          {signUpError ? signUpError : "error placeholder"}
+          {signUpError ? signUpError : ""}
         </ErrorMessage>
         <BigButton type="submit">Sign Up</BigButton>
       </Form>

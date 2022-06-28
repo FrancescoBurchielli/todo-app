@@ -50,7 +50,7 @@ export const Form = styled.form`
   margin-bottom: 50px;
   #message {
     color: white;
-    margin: 20px 20px 50px 20px;
+    margin: 20px 20px 40px 20px;
     text-align: center;
   }
 `;

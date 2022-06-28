@@ -66,7 +66,6 @@ export const AuthProvider: FC<{ children: any }> = ({ children }) => {
     let intervalTime = 1000 * 60 * 59;
 
     let interval = setInterval(() => {
-      console.log("Interval is on...");
       if (authTokens) {
         updateToken();
       }
