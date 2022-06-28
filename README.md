@@ -3,7 +3,7 @@
 A simple web app that allows you to create and update todos. More specifically, the user can:
 1. Sign up
 2. Sign in
-3. Log out
+3. Sign out
 4. Create a todo
 5. Update a todo
 6. Toggle a todo as complete / not complete
@@ -30,7 +30,7 @@ https://docs.docker.com/get-docker/
 
 ## Unfinished business
 
-1. Add more granular and structured error handling, with targeted UI componenents and pages
+1. Add more granular and structured error handling, with targeted UI components and pages
 2. Add tests (e.g. in Jest) 
-3. Refactor code as to be more modular, readable and maintanaible
+3. Refactor code as to be more modular, readable and maintanable
 4. Lint code
